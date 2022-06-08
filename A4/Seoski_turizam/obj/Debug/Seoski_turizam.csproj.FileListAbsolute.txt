@@ -1,0 +1,57 @@
+C:\Users\R2\source\repos\Seoski_turizam\Seoski_turizam\bin\Debug\Seoski_turizam.exe.config
+C:\Users\R2\source\repos\Seoski_turizam\Seoski_turizam\bin\Debug\Seoski_turizam.exe
+C:\Users\R2\source\repos\Seoski_turizam\Seoski_turizam\bin\Debug\Seoski_turizam.pdb
+C:\Users\R2\source\repos\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csproj.AssemblyReference.cache
+C:\Users\R2\source\repos\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Form1.resources
+C:\Users\R2\source\repos\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Properties.Resources.resources
+C:\Users\R2\source\repos\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csproj.GenerateResource.cache
+C:\Users\R2\source\repos\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csproj.CoreCompileInputs.cache
+C:\Users\R2\source\repos\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.exe
+C:\Users\R2\source\repos\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.pdb
+C:\Users\PC\Desktop\Seoski_turizam\Seoski_turizam\bin\Debug\Seoski_turizam.exe.config
+C:\Users\PC\Desktop\Seoski_turizam\Seoski_turizam\bin\Debug\Seoski_turizam.exe
+C:\Users\PC\Desktop\Seoski_turizam\Seoski_turizam\bin\Debug\Seoski_turizam.pdb
+C:\Users\PC\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csprojAssemblyReference.cache
+C:\Users\PC\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Form1.resources
+C:\Users\PC\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Properties.Resources.resources
+C:\Users\PC\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csproj.GenerateResource.cache
+C:\Users\PC\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.exe
+C:\Users\PC\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.pdb
+C:\Users\PC\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Form2.resources
+C:\Users\Administrator\Desktop\Seoski_turizam\Seoski_turizam\bin\Debug\Seoski_turizam.exe.config
+C:\Users\Administrator\Desktop\Seoski_turizam\Seoski_turizam\bin\Debug\Seoski_turizam.exe
+C:\Users\Administrator\Desktop\Seoski_turizam\Seoski_turizam\bin\Debug\Seoski_turizam.pdb
+C:\Users\Administrator\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csproj.SuggestedBindingRedirects.cache
+C:\Users\Administrator\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Form1.resources
+C:\Users\Administrator\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Form2.resources
+C:\Users\Administrator\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.exe
+C:\Users\Administrator\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.pdb
+C:\Users\win10\Desktop\Seoski_turizam\Seoski_turizam\bin\Debug\Seoski_turizam.exe.config
+C:\Users\win10\Desktop\Seoski_turizam\Seoski_turizam\bin\Debug\Seoski_turizam.exe
+C:\Users\win10\Desktop\Seoski_turizam\Seoski_turizam\bin\Debug\Seoski_turizam.pdb
+C:\Users\win10\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csprojAssemblyReference.cache
+C:\Users\win10\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Form1.resources
+C:\Users\win10\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Form2.resources
+C:\Users\win10\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Properties.Resources.resources
+C:\Users\win10\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csproj.GenerateResource.cache
+C:\Users\win10\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csproj.CoreCompileInputs.cache
+C:\Users\win10\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.exe
+C:\Users\win10\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.pdb
+C:\Users\win10\Desktop\Seoski_turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Form3.resources
+C:\Users\Glavni\Desktop\Gotovi radovi 2022\4 Seoski turizam\Seoski_turizam\bin\Debug\Seoski_turizam.exe.config
+C:\Users\Glavni\Desktop\Gotovi radovi 2022\4 Seoski turizam\Seoski_turizam\bin\Debug\Seoski_turizam.exe
+C:\Users\Glavni\Desktop\Gotovi radovi 2022\4 Seoski turizam\Seoski_turizam\bin\Debug\Seoski_turizam.pdb
+C:\Users\Glavni\Desktop\Gotovi radovi 2022\4 Seoski turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csproj.AssemblyReference.cache
+C:\Users\Glavni\Desktop\Gotovi radovi 2022\4 Seoski turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Form1.resources
+C:\Users\Glavni\Desktop\Gotovi radovi 2022\4 Seoski turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Form2.resources
+C:\Users\Glavni\Desktop\Gotovi radovi 2022\4 Seoski turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Form3.resources
+C:\Users\Glavni\Desktop\Gotovi radovi 2022\4 Seoski turizam\Seoski_turizam\obj\Debug\Seoski_turizam.Properties.Resources.resources
+C:\Users\Glavni\Desktop\Gotovi radovi 2022\4 Seoski turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csproj.GenerateResource.cache
+C:\Users\Glavni\Desktop\Gotovi radovi 2022\4 Seoski turizam\Seoski_turizam\obj\Debug\Seoski_turizam.csproj.CoreCompileInputs.cache
+C:\Users\Glavni\Desktop\Gotovi radovi 2022\4 Seoski turizam\Seoski_turizam\obj\Debug\Seoski_turizam.exe
+C:\Users\Glavni\Desktop\Gotovi radovi 2022\4 Seoski turizam\Seoski_turizam\obj\Debug\Seoski_turizam.pdb

@@ -1,0 +1,382 @@
+CREATE TABLE regioni (
+    regionid INT PRIMARY KEY,
+    naziv NVARCHAR(20) NOT NULL,
+    opis NVARCHAR(50) NOT NULL
+);
+
+CREATE TABLE objekti (
+    objekatid INT PRIMARY KEY,
+    naziv NVARCHAR(20) NOT NULL,
+    opis VARCHAR(MAX) NOT NULL
+);
+
+CREATE TABLE cene (
+    cenaid   INT PRIMARY KEY,
+    vrednost INT NOT NULL,
+    datum_od DATE NOT NULL,
+    datum_do DATE NOT NULL
+);
+
+CREATE TABLE gradovi (
+    gradid          INT PRIMARY KEY,
+    grad            NVARCHAR(20) NOT NULL,
+    pozivni_broj    NVARCHAR(3) NOT NULL,
+    postanski_broj  NVARCHAR(10) NOT NULL,
+    broj_stanovnika NVARCHAR(10) NOT NULL,
+    regionid        INT REFERENCES regioni(regionid)
+);
+
+CREATE TABLE klijenti (
+    klijentid       INT PRIMARY KEY,
+    ime             NVARCHAR(20) NOT NULL,
+    prezime         NVARCHAR(20) NOT NULL,
+    adresa          NVARCHAR(20) NOT NULL,
+    gradid          INT REFERENCES gradovi(gradid),
+    telefon         NVARCHAR(13) NOT NULL,
+    email           NVARCHAR(50) NOT NULL,
+    aktivan_klijent NVARCHAR(5) NOT NULL
+);
+
+CREATE TABLE kategorije (
+    kategorijaid INT PRIMARY KEY,
+    naziv        NVARCHAR(20) NOT NULL,
+    opis         VARCHAR(MAX) NOT NULL
+);
+
+CREATE TABLE sela (
+    seloid      INT PRIMARY KEY,
+    naziv       NVARCHAR(20) NOT NULL,
+    gradid      INT REFERENCES gradovi(gradid)
+);
+
+CREATE TABLE kucice (
+    kucicaid                INT PRIMARY KEY,
+    kategorijaid            INT REFERENCES kategorije(kategorijaid),
+    naziv                   NVARCHAR(20) NOT NULL,
+    broj_soba               INT NOT NULL,
+    adresa                  NVARCHAR(20) NOT NULL,
+    seloid                  INT REFERENCES sela(seloid),
+    smernice_kako_stici     VARCHAR(MAX) NOT NULL,
+    zimacenaid              INT REFERENCES cene(cenaid),
+    letocenaid              INT REFERENCES cene(cenaid)
+);
+
+CREATE TABLE dodaci(
+    dodatakid         INT PRIMARY KEY,
+    objekatid         INT REFERENCES objekti(objekatid),
+    kucicaid          INT REFERENCES kucice(kucicaid)
+);
+
+CREATE TABLE rezervacije (
+    rbr                 INT PRIMARY KEY,
+    kucicaid            INT REFERENCES kucice(kucicaid),
+    klijentid           INT REFERENCES klijenti(klijentid),
+    datum_rezervisanja  DATE NOT NULL,
+    vreme_rezervisanja  NVARCHAR(10) NOT NULL,
+    pocetak_rezervacije DATE NOT NULL,
+    kraj_rezervacije    DATE NOT NULL
+);
+
+/* ========================= */
+/* ===== UNOS PODATAKA ===== */
+
+/* == regioni == */
+INSERT INTO regioni
+VALUES (1, 'Centralna Srbija', 'Suma');
+INSERT INTO regioni
+VALUES (2, 'Kosovo i Metohija', 'Nase');
+INSERT INTO regioni
+VALUES (3, 'Vojvodina', 'Ravno');
+INSERT INTO regioni
+VALUES (4, 'Zapadna Srbija', 'Suma');
+INSERT INTO regioni
+VALUES (5, 'Istocna Srbija', 'Suma');
+INSERT INTO regioni
+VALUES (6, 'Juzna Srbija', 'Ravno');
+
+
+
+/* == objekti == */
+INSERT INTO objekti
+VALUES (1, 'Garaza1', 'Velika garaza');
+INSERT INTO objekti
+VALUES (2, 'Supa1', 'Velika supa');
+INSERT INTO objekti
+VALUES (3, 'Supa2', 'Mala supa');
+INSERT INTO objekti
+VALUES (4, 'Garaza2', 'Mala garaza');
+
+/* == cene == */
+INSERT INTO cene
+VALUES (1, 200, CAST('05/01/2020'AS datetime), CAST('08/19/2020'AS datetime));
+INSERT INTO cene
+VALUES (2, 350, CAST('11/01/2019'AS datetime), CAST('01/01/2019'AS datetime));
+INSERT INTO cene
+VALUES (3, 180, CAST('09/01/2020'AS datetime), CAST('03/01/2021'AS datetime));
+INSERT INTO cene
+VALUES (4, 230, CAST('03/31/2020'AS datetime), CAST('09/01/2020'AS datetime));
+INSERT INTO cene
+VALUES (5, 400, CAST('10/01/2020'AS datetime), CAST('03/01/2021'AS datetime));
+INSERT INTO cene
+VALUES (6, 300, CAST('03/01/2020'AS datetime), CAST('10/01/2021'AS datetime));
+INSERT INTO cene
+VALUES (7, 250, CAST('11/01/2020'AS datetime), CAST('04/01/2021'AS datetime));
+INSERT INTO cene
+VALUES (8, 500, CAST('04/01/2020'AS datetime), CAST('11/01/2021'AS datetime));
+INSERT INTO cene
+VALUES (9, 400, CAST('09/01/2020'AS datetime), CAST('05/01/2021'AS datetime));
+INSERT INTO cene
+VALUES (10, 400, CAST('05/01/2020'AS datetime), CAST('09/01/2021'AS datetime));
+
+/* == gradovi == */
+INSERT INTO gradovi
+VALUES (1, 'Raska', '036', '36350', '100000', 1);
+INSERT INTO gradovi
+VALUES (2, 'Kraljevo', '036', '36000', '75000', 1);
+INSERT INTO gradovi
+VALUES (3, 'Novi Sad', '021', '21000', '80000', 3);
+INSERT INTO gradovi
+VALUES (4, 'Leposavic', '028', '38218', '40000', 2);
+INSERT INTO gradovi
+VALUES (5, 'Kragujevac', '034', '34000', '150000', 1);
+INSERT INTO gradovi
+VALUES (6, 'Vranje', '017', '17500', '200000', 6);
+INSERT INTO gradovi
+VALUES (7, 'Tutin', '030', '36320', '31000', 5);
+INSERT INTO gradovi
+VALUES (8, 'Negotin', '019', '19300', '20000', 4);
+INSERT INTO gradovi
+VALUES (9, 'Beograd', '011', '11000', '1500000', 1);
+INSERT INTO gradovi
+VALUES (10, 'Pristina', '038', '10000', '150000', 2);
+
+/* == klijenti == */
+INSERT INTO klijenti
+VALUES (1, 'Mihajlo', 'Karadzic', 'Rascanska 35', 1, '321321313', 'miha@dads', '1');
+INSERT INTO klijenti
+VALUES (2, 'Zivorad', 'Vukovic', 'Milocajska bb', 2, '321321321', 'miha@dads', '-1');
+INSERT INTO klijenti
+VALUES (3, 'Mile', 'Milic', 'Slobode 2', 5, '2132131', 'mile@sdad', '-1');
+INSERT INTO klijenti
+VALUES (4, 'Drasko', 'Draskovic', 'Humanska 1', 1, '32103210', 'dra@sko', '1');
+INSERT INTO klijenti
+VALUES (5, 'Nik', 'Vujicic', 'Probadresa 2', 4, '321321321', 'dsadas@sdads', '1');
+INSERT INTO klijenti
+VALUES (6, 'Mitar', 'Dubicic', 'Dsadsa', 1, '2121', 'mitardubicic@gmail.com', '1');
+INSERT INTO klijenti
+VALUES (7, 'Luka', 'Miladinovic', 'Dsadsa', 10, '5666621821', 'lukamiladinovic@gmail.com', '-1');
+INSERT INTO klijenti
+VALUES (8, 'Milos', 'Markovic', 'lukakakakak', 6, '1245217', 'milosmarkovic@gmail.com', '1');
+INSERT INTO klijenti
+VALUES (9, 'Marija', 'Kostic', 'wewwwwee', 7, '123123', 'marija123@gmail.com', '1');
+INSERT INTO klijenti
+VALUES (10, 'Kristina', 'Lukic', 'Dswwlasdhuea', 8, '2959591', 'klukic@gmail.com', '1');
+INSERT INTO klijenti
+VALUES (11, 'Marko', 'Sasic', 'ueueuhi', 9, '654987', 'susicmarko@gmail.com', '-1');
+INSERT INTO klijenti
+VALUES (12, 'Lazar', 'Senicic', 'aaaaa', 3, '1111112', 'layarsenicic@gmail.com', '1');
+INSERT INTO klijenti
+VALUES (13, 'Marija', 'Maric', '307v', 7, '0621112', 'marija@gmail.com', '1');
+
+/* == kategorije == */
+INSERT INTO kategorije
+VALUES (1, 'Vikendica', 'Vikendica');
+INSERT INTO kategorije
+VALUES (2, 'Lovacka kuca', 'Lovci');
+INSERT INTO kategorije
+VALUES (3, 'Kuca na drvetu', 'Drvo');
+
+/* == sela == */
+INSERT INTO sela
+VALUES (1, 'Milocaj', 2);
+INSERT INTO sela
+VALUES (2, 'Badanj', 1);
+INSERT INTO sela
+VALUES (3, 'Belo brdo', 4);
+INSERT INTO sela
+VALUES (4, 'Gruza', 5);
+INSERT INTO sela
+VALUES (5, 'Pistinci', 3);
+INSERT INTO sela
+VALUES (6, 'Gornje Punosevce', 6);
+INSERT INTO sela
+VALUES (7, 'Arapovice', 7);
+INSERT INTO sela
+VALUES (8, 'Dusanovac', 8);
+INSERT INTO sela
+VALUES (9, 'Velika Krsna', 9);
+INSERT INTO sela
+VALUES (10, 'Makovac', 10);
+
+/* == kucice == */
+INSERT INTO kucice
+VALUES (1, 1, 'Zuta kuca', 3, 'Lepog Bore 2', 1, 'Samo pravo', 2, 1);
+INSERT INTO kucice
+VALUES (2, 3, 'Uzivancija', 2, 'Omladinska bb', 2, 'Levo pa desno', 2, 1);
+INSERT INTO kucice
+VALUES (3, 2, 'Hunter', 5, 'Brdska 0', 3, 'Na vrh brda', 2, 1);
+INSERT INTO kucice
+VALUES (4, 1, 'Ericeva kuca', 2, 'Gruzanska 21', 4, 'Pored puta', 3, 4);
+INSERT INTO kucice
+VALUES (5, 1, 'Dedin opanak', 3, 'Fruska 3', 5, 'Pratite putokaz', 3, 4);
+INSERT INTO kucice
+VALUES (6, 1, 'Etno kuca Maric', 4, 'Poasdabeu', 6, 'Pratite putokaz', 5, 6);
+INSERT INTO kucice
+VALUES (7, 2, 'Kundak', 2, 'Manastirka 12', 7, 'Na raskrsnici pravo pa levo', 7, 8);
+INSERT INTO kucice
+VALUES (8, 3, 'Veverica', 1, 'Vojvode Putnika 112', 8, 'Pratite putokaz', 7, 8);
+INSERT INTO kucice
+VALUES (9, 1, 'Brvnara', 4, 'Karadojrdjeva 8', 9, 'Levo pa desno', 9, 10);
+INSERT INTO kucice
+VALUES (10, 2, 'Na nisanu', 2, 'Fruska 39', 10, 'Pratite putokaz', 9, 10);
+
+/* == dodaci == */
+INSERT INTO dodaci
+VALUES (1, 1, 1);
+INSERT INTO dodaci
+VALUES (2, 2, 2);
+INSERT INTO dodaci
+VALUES (3, 3, 3);
+INSERT INTO dodaci
+VALUES (4, 4, 4);
+INSERT INTO dodaci
+VALUES (5, 1, 5);
+INSERT INTO dodaci
+VALUES (6, 3, 6);
+INSERT INTO dodaci
+VALUES (7, 2, 7);
+
+/* == rezervacije == */
+INSERT INTO rezervacije
+VALUES (1, 1, 2, CAST('05/08/2020'AS datetime), '16:32', CAST('05/14/2020'AS datetime), CAST('05/19/2020'AS datetime));
+INSERT INTO rezervacije
+VALUES (2, 4, 1, CAST('05/09/2020'AS datetime), '20:00', CAST('05/29/2020'AS datetime), CAST('06/12/2020'AS datetime));
+INSERT INTO rezervacije
+VALUES (3, 2, 5, CAST('01/10/2020'AS datetime), '13:37', CAST('07/31/2020'AS datetime), CAST('09/04/2020'AS datetime));
+INSERT INTO rezervacije
+VALUES (4, 3, 3, CAST('04/25/2020'AS datetime), '12:56', CAST('06/05/2020'AS datetime), CAST('06/20/2020'AS datetime));
+INSERT INTO rezervacije
+VALUES (5, 5, 4, CAST('05/25/2020'AS datetime), '10:32', CAST('05/29/2020'AS datetime), CAST('07/23/2020'AS datetime));
+INSERT INTO rezervacije
+VALUES (6, 7, 9, CAST('05/08/2020'AS datetime), '06:45', CAST('09/23/2020'AS datetime), CAST('09/29/2020'AS datetime));
+INSERT INTO rezervacije
+VALUES (7, 10, 7, CAST('12/08/2020'AS datetime), '10:07', CAST('12/10/2020'AS datetime), CAST('12/11/2020'AS datetime));
+INSERT INTO rezervacije
+VALUES (8, 6, 8, CAST('01/01/2020'AS datetime), '03:17', CAST('01/09/2020'AS datetime), CAST('01/16/2020'AS datetime));
+INSERT INTO rezervacije
+VALUES (9, 8, 10, CAST('07/08/2020'AS datetime), '11:59', CAST('10/07/2020'AS datetime), CAST('10/10/2020'AS datetime));
+INSERT INTO rezervacije
+VALUES (10, 9, 6, CAST('05/08/2020'AS datetime), '01:32', CAST('05/14/2020'AS datetime), CAST('05/19/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (11, 3, 13, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (12, 1, 1, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (13, 2, 1, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (14, 3, 1, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (15, 4, 1, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (16, 5, 2, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (17, 6, 2, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (18, 7, 2, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (19, 8, 2, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (20, 9, 3, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (21, 10, 3, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (22, 1, 3, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (23, 2, 3, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (24, 3, 4, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (25, 4, 4, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (26, 5, 4, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (27, 6, 4, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (28, 7, 5, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (29, 8, 5, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (30, 9, 6, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (31, 10, 7, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (32, 1, 7, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (33, 2, 8, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (34, 3, 8, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (35, 4, 9, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (36, 5, 9, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (37, 6, 9, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (38, 7, 10, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (39, 8, 10, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (40, 9, 10, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (41, 10, 10, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (42, 1, 10, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (43, 2, 11, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (44, 3, 11, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (45, 4, 12, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (46, 5, 12, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (47, 6, 12, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (48, 7, 12, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (49, 8, 12, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (50, 9, 13, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (51, 10, 13, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (52, 1, 13, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+INSERT INTO rezervacije
+VALUES (53, 2, 13, CAST('01/09/2020'AS datetime), '01:24', CAST('09/18/2020'AS datetime), CAST('12/31/2020' AS datetime));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
